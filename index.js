@@ -3,12 +3,15 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
 
-teamMembers = [];
+const teamMembers = [];
 
+
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser = () => {
-    return inquirer
+    inquirer
         .prompt([
 
             {
@@ -47,7 +50,7 @@ const promptUser = () => {
 };
 
 const addEngineer = () => {
-    return inquirer
+    inquirer
         .prompt([
             {
                 type: 'input',
@@ -85,7 +88,7 @@ const addEngineer = () => {
 
 }
 const addIntern = () => {
-    return inquirer
+    inquirer
         .prompt([
             {
                 type: 'input',
@@ -129,9 +132,125 @@ function addTeamMember(result) {
     } else if (result === "Intern") {
         addIntern();
     } else {
-        generateHtml();
+        generateHTML();
     }
 };
 
+function profileHTML() {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+    
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container ">
+                <h1 class="display-4 text-center" style="font-family: Bebas Neue;">Dream Team Profile</h1>
+                <p class="lead text-center" style="font-family: Roboto;">Meet the Dream Team. View each employees
+                    information and their
+                    part in the company! </p>
+            </div>
+        </div>
+    
+    
+        <div class="d-flex container">
+            <div class="card m-3 p-3" style="width: 18rem;">
+
+            ${generateTeamMember(teamMembers)}
+
+
+            </div>
+
+            </body>
+            
+            </html>`
+}
+
+function generateTeamMember(teamMembers) {
+
+    const generateManager = manager => {
+
+        return `      <div class="card-body">
+    <h5 class="card-title">${manager.getName()}</h5>
+    ${manager.getRole()}<i class="fas fa-user-tie fa-2x"></i>
+
+</div>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${manager.getId()}</li>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
+       <h6> <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h6>
+    </li>
+    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${manager.getofficeNumber()}</li>
+</ul>
+</div>`
+    }
+
+    const generateEngineer = engineer => {
+        return `      <div class="card-body">
+      <h5 class="card-title">${engineer.getName()}</h5>
+      ${engineer.getRole()}<i class="fas fa-user-tie fa-2x"></i>
+  
+  </div>
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item"><i class="fas fa-laptop-code fa-2x"></i> ID: ${engineer.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
+         <h6> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h6>
+      </li>
+      <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${engineer.getGithub()}</li>
+  </ul>
+  </div>`;
+    }
+
+    const generateIntern = intern => {
+        return `      <div class="card-body">
+    <h5 class="card-title">${intern.getName()}</h5>
+    ${intern.getRole()}<i class="ffas fa-user-graduate fa-2x"></i>
+
+</div>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item"><i class="fas fa-laptop-code fa-2x"></i> ID: ${intern.getId()}</li>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
+       <h6> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h6>
+    </li>
+    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${intern.getSchool()}</li>
+</ul>
+</div>`;
+    };
+
+    const team = [];
+
+    team.push(teamMembers
+        .filter(employee => employee.getRole() === 'Manager')
+        .map(manager => generateManager(manager))
+    );
+    team.push(teamMembers
+        .filter(employee => employee.getRole() === 'Engineer')
+        .map(engineer => generateEngineer(engineer))
+    );
+    team.push(teamMembers
+        .filter(employee => employee.getRole() === 'Intern')
+        .map(intern => generateIntern(intern))
+    );
+    return team.join("");
+
+}
+
+
+
+
+function generateHTML() {
+
+}
 
 promptUser();
