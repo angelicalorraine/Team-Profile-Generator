@@ -1,0 +1,25 @@
+body {
+    font-family: Roboto;
+}
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h4 {
+    font-size: 1.3rem;;
+}
+
+.team-profile {
+    background-color: rgb(109, 186, 253);
+    font-family: Roboto;
+}
+
+.dream-team{
+    font-family: Bebas Neue;
+}
+
+
+.card{
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.7);
+
+}

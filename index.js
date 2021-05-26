@@ -136,7 +136,7 @@ function addTeamMember(result) {
     }
 };
 
-function profileHTML() {
+const profileHTML = teamMembers => {
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -146,18 +146,19 @@ function profileHTML() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profile</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    
+        <link rel="stylesheet" href="dist/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet">
+        
     
     </head>
     
     <body>
     
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid team-profile">
             <div class="container ">
-                <h1 class="display-4 text-center" style="font-family: Bebas Neue;">Dream Team Profile</h1>
-                <p class="lead text-center" style="font-family: Roboto;">Meet the Dream Team. View each employees
+                <h1 class="display-4 text-center dream-team" >Dream Team Profile</h1>
+                <p class="lead text-center">Meet the Dream Team. View each employees
                     information and their
                     part in the company! </p>
             </div>
@@ -165,7 +166,7 @@ function profileHTML() {
     
     
         <div class="d-flex container">
-            <div class="card m-3 p-3" style="width: 18rem;">
+            
 
             ${generateTeamMember(teamMembers)}
 
@@ -177,53 +178,53 @@ function profileHTML() {
             </html>`
 }
 
-function generateTeamMember(teamMembers) {
+const generateTeamMember = teamMembers => {
 
     const generateManager = manager => {
 
-        return `      <div class="card-body">
-    <h5 class="card-title">${manager.getName()}</h5>
-    ${manager.getRole()}<i class="fas fa-user-tie fa-2x"></i>
+        return `<div class="card m-3 p-3 " style="width: 18rem;">      <div class="card-body cardTop">
+    <h2 class="card-title">${manager.getName()}</h2>
+   <h4> ${manager.getRole()}<i class="fas fa-user-tie fa-lg"></i></h4>
 
 </div>
 <ul class="list-group list-group-flush">
-    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${manager.getId()}</li>
-    <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
-       <h6> <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h6>
+    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${manager.getId()}</li> </h4>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+        <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h4>
     </li>
-    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${manager.getofficeNumber()}</li>
+    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${manager.getOfficeNumber()}</li></h4>
 </ul>
 </div>`
     }
 
     const generateEngineer = engineer => {
-        return `      <div class="card-body">
-      <h5 class="card-title">${engineer.getName()}</h5>
-      ${engineer.getRole()}<i class="fas fa-user-tie fa-2x"></i>
+        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-body cardTop">
+      <h2 class="card-title">${engineer.getName()}</h2>
+      <h4>${engineer.getRole()}<i class="fas fa-laptop-code fa-lg"></i></h4>
   
   </div>
   <ul class="list-group list-group-flush">
-      <li class="list-group-item"><i class="fas fa-laptop-code fa-2x"></i> ID: ${engineer.getId()}</li>
-      <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
-         <h6> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h6>
+      <li class="list-group-item"><i class="far fa-id-badge"></i>  ID: ${engineer.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+          <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
       </li>
-      <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${engineer.getGithub()}</li>
+      <li class="list-group-item"><i class="fab fa-github"></i> GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li> 
   </ul>
   </div>`;
     }
 
     const generateIntern = intern => {
-        return `      <div class="card-body">
-    <h5 class="card-title">${intern.getName()}</h5>
-    ${intern.getRole()}<i class="ffas fa-user-graduate fa-2x"></i>
+        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-body cardTop">
+    <h2 class="card-title">${intern.getName()}</h2>
+    <h4>${intern.getRole()}<i class="fas fa-user-graduate fa-lg"></i></h4>
 
 </div>
 <ul class="list-group list-group-flush">
-    <li class="list-group-item"><i class="fas fa-laptop-code fa-2x"></i> ID: ${intern.getId()}</li>
-    <li class="list-group-item"><i class="fas fa-envelope"></i> Email:
-       <h6> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h6>
+    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${intern.getId()}</li>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+        <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
     </li>
-    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${intern.getSchool()}</li>
+    <li class="list-group-item"><i class="fas fa-school"></i> School: ${intern.getSchool()}</li>
 </ul>
 </div>`;
     };
@@ -250,6 +251,9 @@ function generateTeamMember(teamMembers) {
 
 
 function generateHTML() {
+    fs.writeFileSync("Team.html", profileHTML(teamMembers), (err) =>
+        err ? console.error(err) : console.log('Go Team!!')
+    )
 
 }
 
