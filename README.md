@@ -16,6 +16,8 @@
 
 🎥 [Walkthrough Video](https://drive.google.com/file/d/1uXkS0te4fHCOxFoZfms_QxHPrUuKBN6K/view?usp=sharing)
 
+[Deployed App Results](https://angelicalorraine.github.io/Team-Profile-Generator/)
+
 Build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. Also write a unit test for every part of your code and ensure that it passes each test.
 
 ![Team Profile Results](assets/Team-Profile.png)
