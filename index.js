@@ -3,7 +3,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
+
 
 const teamMembers = [];
 
@@ -181,7 +181,7 @@ const generateTeamMember = teamMembers => {
 
     const generateManager = manager => {
 
-        return `<div class="card m-3 p-3 " style="width: 18rem;">      <div class="card-header cardTop">
+        return `<div class="card" style="width: 18rem;">      <div class="card-header cardTop">
     <h2 class="card-title">${manager.getName()}</h2>
    <h4>  <i class="fas fa-user-tie fa-lg"></i> ${manager.getRole()} </h4>
 
@@ -197,7 +197,7 @@ const generateTeamMember = teamMembers => {
     }
 
     const generateEngineer = engineer => {
-        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-header cardTop">
+        return ` <div class="card style="width: 18rem;">     <div class="card-header cardTop">
       <h2 class="card-title">${engineer.getName()}</h2>
       <h4> <i class="fas fa-laptop-code fa-lg"></i> ${engineer.getRole()}</h4>
   
@@ -213,7 +213,7 @@ const generateTeamMember = teamMembers => {
     }
 
     const generateIntern = intern => {
-        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-header cardTop">
+        return ` <div class="card style="width: 18rem;">     <div class="card-header cardTop">
     <h2 class="card-title">${intern.getName()}</h2>
     <h4> <i class="fas fa-user-graduate fa-lg"></i> ${intern.getRole()}</h4>
 

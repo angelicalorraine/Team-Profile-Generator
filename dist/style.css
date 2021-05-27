@@ -1,6 +1,6 @@
 body {
   font-family: Roboto;
-  font-size: 18px;
+  font-size: 18.5px;
 }
 
 .dream-team {
@@ -26,7 +26,7 @@ h4 {
 
 .card {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
-  margin: 0px 10px;
+  margin: 10px;
 }
 
 .team-profile {
@@ -47,5 +47,4 @@ h4 {
     rgba(249, 170, 0, 1) 0%,
     rgba(166, 254, 255, 1) 100%
   );
-  margin-bottom: 3px;
 }
