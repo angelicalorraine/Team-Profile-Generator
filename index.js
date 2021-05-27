@@ -8,7 +8,6 @@ const fs = require('fs');
 const teamMembers = [];
 
 
-
 const promptUser = () => {
     inquirer
         .prompt([
