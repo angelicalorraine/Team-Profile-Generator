@@ -47,4 +47,6 @@ Licensed under [MIT License](https://spdx.org/licenses/MIT.html).
 
 ## Questions
 
+- Let's connect on Linkedin at [Angelica Hernandez](https://www.linkedin.com/in/angelica-hernandez-/)
 - Follow me on Github at [angelicalorraine](http://github.com/angelicalorraine)
+- For more questions contact me: gel.lorraine@gmail.com
