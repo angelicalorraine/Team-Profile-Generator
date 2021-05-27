@@ -1,25 +1,51 @@
 body {
-    font-family: Roboto;
+  font-family: Roboto;
+  font-size: 18px;
 }
+
+.dream-team {
+  font-family: Bebas Neue;
+}
+
 h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 h4 {
-    font-size: 1.3rem;;
+  font-size: 1.3rem;
+}
+
+.d-flex {
+  justify-content: center;
+}
+
+.card-body {
+  margin: 2px;
+}
+
+.card {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+  margin: 0px 10px;
 }
 
 .team-profile {
-    background-color: rgb(109, 186, 253);
-    font-family: Roboto;
+  background: rgb(166, 254, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(166, 254, 255, 1) 0%,
+    rgba(231, 253, 254, 1) 100%
+  );
+  font-family: Roboto;
+  justify-content: center;
 }
 
-.dream-team{
-    font-family: Bebas Neue;
-}
-
-
-.card{
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.7);
-
+.card-header {
+  background: rgb(249, 170, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(249, 170, 0, 1) 0%,
+    rgba(166, 254, 255, 1) 100%
+  );
+  margin-bottom: 3px;
 }

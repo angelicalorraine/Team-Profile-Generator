@@ -8,7 +8,6 @@ const util = require('util');
 const teamMembers = [];
 
 
-const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser = () => {
     inquirer
@@ -165,7 +164,7 @@ const profileHTML = teamMembers => {
         </div>
     
     
-        <div class="d-flex container">
+        <div class="d-flex flex-wrap container">
             
 
             ${generateTeamMember(teamMembers)}
@@ -182,49 +181,49 @@ const generateTeamMember = teamMembers => {
 
     const generateManager = manager => {
 
-        return `<div class="card m-3 p-3 " style="width: 18rem;">      <div class="card-body cardTop">
+        return `<div class="card m-3 p-3 " style="width: 18rem;">      <div class="card-header cardTop">
     <h2 class="card-title">${manager.getName()}</h2>
-   <h4> ${manager.getRole()}<i class="fas fa-user-tie fa-lg"></i></h4>
+   <h4>  <i class="fas fa-user-tie fa-lg"></i> ${manager.getRole()} </h4>
 
 </div>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${manager.getId()}</li> </h4>
-    <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+<ul class="list-group list-group-flush card-body">
+    <li class="list-group-item"><i class="far fa-id-badge"></i> <b>ID:</b> ${manager.getId()}</li> </h4>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> <b>Email: </b>
         <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h4>
     </li>
-    <li class="list-group-item"><i class="fas fa-building"></i> Office Number: ${manager.getOfficeNumber()}</li></h4>
+    <li class="list-group-item"><i class="fas fa-building"></i> <b>Office Number: </b> ${manager.getOfficeNumber()}</li></h4>
 </ul>
 </div>`
     }
 
     const generateEngineer = engineer => {
-        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-body cardTop">
+        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-header cardTop">
       <h2 class="card-title">${engineer.getName()}</h2>
-      <h4>${engineer.getRole()}<i class="fas fa-laptop-code fa-lg"></i></h4>
+      <h4> <i class="fas fa-laptop-code fa-lg"></i> ${engineer.getRole()}</h4>
   
   </div>
-  <ul class="list-group list-group-flush">
-      <li class="list-group-item"><i class="far fa-id-badge"></i>  ID: ${engineer.getId()}</li>
-      <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+  <ul class="list-group list-group-flush card-body">
+      <li class="list-group-item"><i class="far fa-id-badge"></i>  <b>ID:</b> ${engineer.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-envelope"></i> <b>Email: </b>
           <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
       </li>
-      <li class="list-group-item"><i class="fab fa-github"></i> GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li> 
+      <li class="list-group-item"><i class="fab fa-github"></i> <b>GitHub:</b> <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li> 
   </ul>
   </div>`;
     }
 
     const generateIntern = intern => {
-        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-body cardTop">
+        return ` <div class="card m-3 p-3" style="width: 18rem;">     <div class="card-header cardTop">
     <h2 class="card-title">${intern.getName()}</h2>
-    <h4>${intern.getRole()}<i class="fas fa-user-graduate fa-lg"></i></h4>
+    <h4> <i class="fas fa-user-graduate fa-lg"></i> ${intern.getRole()}</h4>
 
 </div>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item"><i class="far fa-id-badge"></i> ID: ${intern.getId()}</li>
-    <li class="list-group-item"><i class="fas fa-envelope"></i> Email: 
+<ul class="list-group list-group-flush card-body">
+    <li class="list-group-item"><i class="far fa-id-badge"></i> <b>ID:</b> ${intern.getId()}</li>
+    <li class="list-group-item"><i class="fas fa-envelope"></i> <b>Email: </b>
         <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
     </li>
-    <li class="list-group-item"><i class="fas fa-school"></i> School: ${intern.getSchool()}</li>
+    <li class="list-group-item"><i class="fas fa-school"></i> <b> School:</b> ${intern.getSchool()}</li>
 </ul>
 </div>`;
     };
